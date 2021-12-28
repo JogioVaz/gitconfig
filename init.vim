@@ -11,6 +11,7 @@ set sw=2
 set relativenumber
 set laststatus=2
 set splitright
+set ma
 
 "Aquí es donde se instalan los plugins y temas
 call plug#begin('~/.vim/plugged')
@@ -82,7 +83,7 @@ function Ter(...)
   ":wincmd w - Esto es lo mismo que la linea de arriba
   
   :resize 7 "\<CR>"
-  
+  :set eadirection=hor
   "if empty(a:1)
   " echo "Estas en: "
   " echo expand("%")
