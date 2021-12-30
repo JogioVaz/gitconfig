@@ -7,11 +7,14 @@ set showcmd
 set ruler
 set encoding=utf-8
 set showmatch
-set sw=2
+set shiftwidth=2
 set relativenumber
 set laststatus=2
 set splitright
 set ma
+set autoindent
+set smartindent
+set cursorline
 
 "Aquí es donde se instalan los plugins y temas
 call plug#begin('~/.vim/plugged')
@@ -36,7 +39,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim',
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " MAPEO DE TECLAS
@@ -58,6 +61,12 @@ nmap <Leader>q :q<CR>
 :imap <A-j> <Down>
 :imap <A-k> <Up>
 
+"Siguiente pestaña
+nmap <Leader>nx :tabn<CR>
+
+"Anterior pestaña
+nmap <Leader>p :tabp<CR>
+
 "c + espacio en modo normal para borrar a partir del cursor
 nmap c<Leader> c$
 
@@ -72,7 +81,13 @@ noremap <leader>gs :CocSearch
 nmap <leader>fs :FZF<CR>
 nmap <leader>rg :Rg<CR>
 
-"Crear una nueva terminal en la parte de abajo
+"Comando para encerrar una palabra como si fuera un componente, deja listo el cursor para agregar props (Svelte, React) <palabra />
+nmap <leader>c viwc<<C-r>"<leader>/>,,hi
+
+"Crear una terminar y dejando el cursor listo para insertar: ESPACIO + t
+noremap <leader>t :tabnew<CR>:term<CR>i
+
+"Crear una nueva terminal en la parte de abajo llamando :Ter
 function Ter(...)
 
   :echo a:1
